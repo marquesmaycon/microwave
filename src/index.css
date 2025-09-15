@@ -6,3 +6,28 @@
 		cursor: pointer;
 	}
 }
+
+@theme {
+	--animate-gradient-wave: gradientWave 1s ease-in-out infinite alternate;
+
+	@keyframes gradientWave {
+		0% {
+			background-position: 0% 0%;
+		}
+		100% {
+			background-position: 0% 100%;
+		}
+	}
+}
+
+@layer utilities {
+	.animate-gradient-wave {
+		background: linear-gradient(
+			180deg,
+			#c77847 20%,
+			rgba(255, 255, 255, 0.5) 100%
+		);
+		background-size: 100% 200%;
+		animation: gradientWave 2s ease-in-out infinite alternate;
+	}
+}
