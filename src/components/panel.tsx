@@ -117,6 +117,7 @@ export const Panel = () => {
 						? "Funcionando"
 						: "Pausado"}
 				{state.selectedProgram && ` | Programa: ${state.selectedProgram}`}
+				{state.time}
 			</div>
 		</div>
 	);

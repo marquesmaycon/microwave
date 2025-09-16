@@ -111,7 +111,6 @@ type MicrowaveContextType = {
 		startTimer: () => void;
 		pauseTimer: () => void;
 		stopTimer: () => void;
-		setPower: (power: number) => void;
 		selectProgram: (program: Presets) => void;
 		reset: () => void;
 	};
