@@ -44,7 +44,6 @@ type MicrowaveAction =
 	| { type: "PAUSE_TIMER" }
 	| { type: "STOP_TIMER" }
 	| { type: "TICK" }
-	| { type: "SET_POWER"; payload: number }
 	| { type: "SELECT_PROGRAM"; payload: Presets }
 	| { type: "RESET" };
 
@@ -86,6 +85,7 @@ export function microwaveReducer(
 				...state,
 				time: newTime,
 				status: newTime === 0 ? "idle" : state.status,
+				selectedProgram: newTime === 0 ? null : state.selectedProgram,
 			};
 		}
 		case "SELECT_PROGRAM": {
@@ -113,8 +113,9 @@ type MicrowaveContextType = {
 		stopTimer: () => void;
 		selectProgram: (program: Presets) => void;
 		reset: () => void;
+		tick: () => void;
+		playBeep: (triple?: boolean) => void;
 	};
-	formatTime: (ms: number) => string;
 };
 
 export const MicrowaveContext = createContext<MicrowaveContextType | undefined>(

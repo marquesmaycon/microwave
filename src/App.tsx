@@ -1,6 +1,6 @@
 import { Oven } from "./components/oven";
 import { Panel } from "./components/panel";
-import { MicrowaveProvider } from "./features/microwave-provider";
+import { MicrowaveProvider } from "./microwave/microwave-provider";
 
 function App() {
 	return (

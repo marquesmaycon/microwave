@@ -1,6 +1,6 @@
 import { twMerge } from "tailwind-merge";
 
-import { presetPrograms, useMicrowave } from "../features/microwave-context";
+import { presetPrograms, useMicrowave } from "../microwave/microwave-context";
 
 export const Oven = () => {
 	const { state } = useMicrowave();
