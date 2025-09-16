@@ -14,31 +14,32 @@ export const Panel = () => {
 	const handleNumberInput = (digit: number) => {
 		if (selectedProgram) return;
 
-		// Converte tempo atual para segundos
+		// Sempre trabalha com 4 dígitos (MMSS)
 		const currentSeconds = Math.floor(time / 1000);
+		const minutes = Math.floor(currentSeconds / 60);
+		const seconds = currentSeconds % 60;
 
-		// Transforma em string sem zeros à esquerda (máx 4 dígitos)
-		const digits = currentSeconds.toString();
+		console.log({ currentSeconds, minutes, seconds });
 
-		// Se já tem 4 dígitos, não aceita mais entrada
-		if (digits.length >= 4) return;
+		// Monta string MMSS
+		let digits = `${minutes.toString().padStart(2, "0")}${seconds
+			.toString()
+			.padStart(2, "0")}`;
 
-		// Adiciona novo dígito
-		const newDigits = digits + digit.toString();
+		console.log({ digits });
 
-		// Garante 4 dígitos (MMSS)
-		const timeString = newDigits.padStart(4, "0");
+		// Empurra os dígitos para a esquerda e adiciona o novo à direita
+		digits = digits.slice(1) + digit.toString();
 
-		let minutes = parseInt(timeString.slice(0, 2), 10);
-		let seconds = parseInt(timeString.slice(2, 4), 10);
+		console.log({ digits });
 
-		// Ajusta segundos > 59
-		if (seconds > 59) {
-			minutes += Math.floor(seconds / 60);
-			seconds = seconds % 60;
-		}
+		const newMinutes = parseInt(digits.slice(0, 2), 10);
+		const newSeconds = parseInt(digits.slice(2, 4), 10);
 
-		const newTimeInMs = (minutes * 60 + seconds) * 1000;
+		console.log({ newMinutes, newSeconds });
+
+		const newTimeInMs = (newMinutes * 60 + newSeconds) * 1000;
+		console.log({ newTimeInMs });
 		actions.setTime(newTimeInMs);
 	};
 
@@ -47,8 +48,10 @@ export const Panel = () => {
 			actions.startTimer();
 		} else if (status === "running") {
 			actions.addTime(30000);
-		} else {
+		} else if (time === 0) {
 			actions.setTime(30000);
+			actions.startTimer();
+		} else {
 			actions.startTimer();
 		}
 	};

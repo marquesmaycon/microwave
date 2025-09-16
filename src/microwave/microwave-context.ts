@@ -8,7 +8,7 @@ export const presetPrograms = {
 		img: "🥙",
 	},
 	Bebidas: {
-		ms: 120000,
+		ms: 150000,
 		img: "☕",
 	},
 	Pipoca: {
@@ -16,7 +16,7 @@ export const presetPrograms = {
 		img: "🍿",
 	},
 	Milho: {
-		ms: 60000,
+		ms: 240000,
 		img: "🌽",
 	},
 	Arroz: {

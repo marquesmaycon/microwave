@@ -9,7 +9,7 @@ export const Oven = () => {
 		<div className="border-12 border-sky-600 bg-amber-200 flex-2 w-full h-full rounded-xl">
 			<div
 				className={twMerge(
-					"w-full h-full flex items-center justify-center rounded text-2xl",
+					"w-full h-full flex items-center justify-center rounded text- max-md:p-8",
 					running && "animate-gradient-wave",
 				)}
 			>
