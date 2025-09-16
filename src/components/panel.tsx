@@ -65,6 +65,10 @@ export const Panel = () => {
 	};
 
 	const handlePresetProgram = (program: Presets) => {
+		if (state.status === "running") {
+			actions.pauseTimer();
+			return;
+		}
 		actions.selectProgram(program);
 		actions.setTime(presetPrograms[program].ms);
 	};
